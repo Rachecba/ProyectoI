@@ -11,9 +11,9 @@ import atm.model.CajeroImpl;
  *
  * @author Rachel
  */
-public class Account extends State{
+public class Login extends State{
     
-    public Account(CajeroImpl atm){
+    public Login(CajeroImpl atm){
         super(atm);
     }
 
