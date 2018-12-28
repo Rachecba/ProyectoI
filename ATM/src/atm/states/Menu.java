@@ -5,10 +5,26 @@
  */
 package atm.states;
 
+import atm.model.CajeroImpl;
+
 /**
  *
  * @author Rachel
  */
-public class Menu {
+public class Menu extends State{
+    
+    public Menu(CajeroImpl atm){
+        super(atm);
+    }
+
+    @Override
+    public String botones(int num) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void execute(int num) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
