@@ -2,6 +2,7 @@
 package atm.model;
 
 import atm.data.BankDatabase;
+import atm.states.Login;
 import atm.states.State;
 import atm.view.CashDispenser;
 import atm.view.DepositSlot;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Rachel
  */
-public class CajeroImpl implements Cajero{
+public class CajeroImpl implements Cajero {
     State state;
     Consumer<String> listener;
     
@@ -44,6 +45,9 @@ public class CajeroImpl implements Cajero{
         this.cashDispenser = cashDispenser; 
         this.depositSlot = depositSlot; 
         this.bankDatabase = bankDatabase; 
+        
+        //inicializar el estado en login
+        this.state = new Login(this);
     }
     
     public void run()
@@ -149,9 +153,33 @@ public class CajeroImpl implements Cajero{
         return temp; 
     }
     
+    
+    public void changeState(State state){
+        this.state = state;
+    }
+    
+    public State getState(){
+        return state;
+    }
+    
     @Override
     public void attach(Consumer<String> listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onInit() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void botones(int num) {
+        listener.accept(state.botones(num));
+    }
+
+    @Override
+    public void execute(int num) {
+     //   listener.accept(state.execute(num));
     }
     
 }
