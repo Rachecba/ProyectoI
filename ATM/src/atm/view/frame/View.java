@@ -62,27 +62,27 @@ public class View extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(140, 189, 229));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button 1.png"))); // NOI18N
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button 1.png"))); // NOI18N
 
-        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button2.png"))); // NOI18N
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button2.png"))); // NOI18N
 
-        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button3.png"))); // NOI18N
+        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button3.png"))); // NOI18N
 
-        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button4.png"))); // NOI18N
+        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button4.png"))); // NOI18N
 
-        button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button5.png"))); // NOI18N
+        button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button5.png"))); // NOI18N
 
-        button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button6.png"))); // NOI18N
+        button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button6.png"))); // NOI18N
 
-        button7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button7.png"))); // NOI18N
+        button7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button7.png"))); // NOI18N
 
-        button8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button8.png"))); // NOI18N
+        button8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button8.png"))); // NOI18N
 
-        button9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button9.png"))); // NOI18N
+        button9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button9.png"))); // NOI18N
 
-        button0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/button0.png"))); // NOI18N
+        button0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button0.png"))); // NOI18N
 
-        enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/enter.png"))); // NOI18N
+        enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/enter.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,9 +134,9 @@ public class View extends javax.swing.JFrame {
                     .addComponent(enter, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        takeCash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tome.png"))); // NOI18N
+        takeCash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/tome.png"))); // NOI18N
 
-        insertCash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/inserte.png"))); // NOI18N
+        insertCash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/inserte.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

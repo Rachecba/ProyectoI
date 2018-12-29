@@ -196,77 +196,77 @@
             <Component class="javax.swing.JButton" name="button1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button 1.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button 1.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button2.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button2.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button3.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button3.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button4.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button4.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button5.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button5.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button6.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button6.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button7.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button7.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button8">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button8.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button8.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button9">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button9.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button9.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="button0">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/button0.png"/>
+                  <Image iconType="3" name="/atm/view/icons/button0.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="enter">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/enter.png"/>
+                  <Image iconType="3" name="/atm/view/icons/enter.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -275,14 +275,14 @@
         <Component class="javax.swing.JButton" name="takeCash">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/tome.png"/>
+              <Image iconType="3" name="/atm/view/icons/tome.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="insertCash">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/inserte.png"/>
+              <Image iconType="3" name="/atm/view/icons/inserte.png"/>
             </Property>
           </Properties>
         </Component>
