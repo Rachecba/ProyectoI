@@ -1,10 +1,6 @@
 package atm.view.cmd;
 
 
-
-// DepositSlot.java
-// Represents the deposit slot of the ATM
-
 public class DepositSlot implements atm.view.DepositSlot 
 {
    // indicates whether envelope was received (always returns true, 
@@ -12,9 +8,9 @@ public class DepositSlot implements atm.view.DepositSlot
     @Override
    public boolean isEnvelopeReceived()
    {
-      return true; // deposit envelope was received
-   } // end method isEnvelopeReceived
-} // end class DepositSlot
+      return true; 
+   } 
+} 
 
 
 

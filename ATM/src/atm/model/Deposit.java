@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package atm.model;
 
 import atm.data.BankDatabase;
@@ -16,46 +12,35 @@ import atm.view.frame.View;
  * @author Rachel
  */
 public class Deposit extends Transaction{
-    private double amount; // amount to deposit
-    private Keypad keypad; // reference to keypad
-    private DepositSlot depositSlot; // reference to deposit slot
-    private final static int CANCELED = 0; // constant for cancel option
+    private double amount; 
+    private Keypad keypad; 
+    private DepositSlot depositSlot; 
+    private final static int CANCELED = 0; 
     
-    // Deposit constructor
-    public Deposit( int userAccountNumber, Screen atmScreen,
-            BankDatabase atmBankDatabase, Keypad atmKeypad,
-            DepositSlot atmDepositSlot )
-    {
-        // initialize superclass variables
+    public Deposit( int userAccountNumber, Screen atmScreen, BankDatabase atmBankDatabase, Keypad atmKeypad, DepositSlot atmDepositSlot ){
         super( userAccountNumber, atmScreen, atmBankDatabase );
         
-        // initialize references to keypad and deposit slot
         keypad = atmKeypad;
         depositSlot = atmDepositSlot;
-    } // end Deposit constructor
+    } 
     
-    // perform transaction
     @Override
     public void execute()
     {
-        BankDatabase bankDatabase = getBankDatabase(); // get reference
-        Screen screen = getScreen(); // get reference
+        BankDatabase bankDatabase = getBankDatabase(); 
+        Screen screen = getScreen(); 
         
-        amount = promptForDepositAmount(); // get deposit amount from user
+        amount = promptForDepositAmount(); 
         
-        // check whether user entered a deposit amount or canceled
         if ( amount != CANCELED )
         {
-            // request deposit envelope containing specified amount
             screen.displayMessage(
                     "\nPlease insert a deposit envelope containing " );
             screen.displayDollarAmount( amount );
             screen.displayMessageLine( "." );
             
-            // receive deposit envelope
             boolean envelopeReceived = depositSlot.isEnvelopeReceived();
             
-            // check whether deposit envelope was received
             if ( envelopeReceived )
             {
                 screen.displayMessageLine( "\nYour envelope has been " +
@@ -63,27 +48,24 @@ public class Deposit extends Transaction{
                         "be available until we verify the amount of any " +
                         "enclosed cash and your checks clear." );
                 
-                // credit account to reflect the deposit
                 bankDatabase.credit( getAccountNumber(), amount );
-            } // end if
-            else // deposit envelope not received
+            }
+            else 
             {
                 screen.displayMessageLine( "\nYou did not insert an " +
                         "envelope, so the ATM has canceled your transaction." );
-            } // end else
-        } // end if
-        else // user canceled instead of entering amount
+            } 
+        } 
+        else 
         {
             screen.displayMessageLine( "\nCanceling transaction..." );
-        } // end else
-    } // end method execute
+        } 
+    } 
     
-    // prompt user to enter a deposit amount in cents
     private double promptForDepositAmount()
     {
-        Screen screen = getScreen(); // get reference to screen
+        Screen screen = getScreen(); 
         
-        // display the prompt
         screen.displayMessage( "\nPlease enter a deposit amount in " +
                 "CENTS (or 0 to cancel): \n" );
         
@@ -96,14 +78,13 @@ public class Deposit extends Transaction{
         
         
         
-        int input = keypad.getInput(); // receive input of deposit amount
+        int input = keypad.getInput(); 
         
-        // check whether the user canceld or entered a valid amount
         if ( input == CANCELED )
             return CANCELED;
         else
         {
-            return ( double ) input / 100; // return dollar amount
-        } // end else
-    } // end method promptForDepositAmount
+            return ( double ) input / 100; 
+        }
+    } 
 }
