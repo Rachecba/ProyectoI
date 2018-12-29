@@ -6,6 +6,7 @@
 package atm.model;
 
 import atm.data.BankDatabase;
+import atm.view.DepositSlot;
 import atm.view.Keypad;
 import atm.view.Screen;
 import atm.view.frame.View;
@@ -85,7 +86,16 @@ public class Deposit extends Transaction{
       // display the prompt
       screen.displayMessage( "\nPlease enter a deposit amount in " + 
          "CENTS (or 0 to cancel): \n" );
-      View.setPrintInput(true);
+      
+      
+      
+      //ese metodo esataba dando error
+      
+      
+   //   View.setPrintInput(true);
+   
+   
+   
       int input = keypad.getInput(); // receive input of deposit amount
       
       // check whether the user canceld or entered a valid amount

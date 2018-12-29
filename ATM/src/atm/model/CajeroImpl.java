@@ -7,6 +7,8 @@ package atm.model;
 
 import atm.data.BankDatabase;
 import atm.states.State;
+import atm.view.CashDispenser;
+import atm.view.DepositSlot;
 import atm.view.Keypad;
 import atm.view.Screen;
 import java.util.function.Consumer;
@@ -24,6 +26,8 @@ public class CajeroImpl implements Cajero{
    private int currentAccountNumber; // current user's account number
    private Screen screen; // ATM's screen
    private Keypad keypad; // ATM's keypad
+   private CashDispenser cashDispenser; // ATM's cash dispenser
+   private DepositSlot depositSlot; // ATM's deposit slot
    private BankDatabase bankDatabase; // account information database
    
    private static final String CLASSNAME = CajeroImpl.class.getCanonicalName(); 
@@ -35,15 +39,16 @@ public class CajeroImpl implements Cajero{
    private static final int DEPOSIT = 3;
    private static final int EXIT = 4;
    
-   public CajeroImpl(Screen screen, Keypad keypad, BankDatabase bankDatabase) 
+   public CajeroImpl(Screen screen, Keypad keypad, CashDispenser cashDispenser, DepositSlot depositSlot, BankDatabase bankDatabase) 
    {
       userAuthenticated = false; // user is not authenticated to start
       currentAccountNumber = 0; // no current account number to start
       this.screen = screen; // create screen
       this.keypad = keypad; // create keypad 
+      this.cashDispenser = cashDispenser; // create cash dispenser
+      this.depositSlot = depositSlot; // create deposit slot
       this.bankDatabase = bankDatabase; // create acct info database
-   } 
-   
+   } // end no-argument ATM constructor
    public void run() 
    {
       
