@@ -28,13 +28,38 @@ public class Menu extends State{
     }
 
     @Override
-    public String mainMenu() {
-        return "\nMain menu:" + 
+    public String message() {
+         return "\nMain menu:" + 
                 "\n 1 - View my balance" + 
                 "\n 2 - Withdraw cash" + 
                 "\n 3 - Deposit funds" + 
                 "\n 4 - Exit" + 
                 "\nEnter a choice: ";
+    }
+
+    @Override
+    public int menuOpt() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String balanceTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String withdrawalTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String depositTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String exit() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
     

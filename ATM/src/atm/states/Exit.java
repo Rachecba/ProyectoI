@@ -11,9 +11,9 @@ import atm.model.CajeroImpl;
  *
  * @author Rachel
  */
-public class Deposit extends State{
+public class Exit extends State{
     
-    public Deposit(CajeroImpl atm){
+    public Exit(CajeroImpl atm){
         super(atm);
     }
 
@@ -56,5 +56,4 @@ public class Deposit extends State{
     public String exit() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
