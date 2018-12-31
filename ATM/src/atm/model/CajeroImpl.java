@@ -49,110 +49,7 @@ public class CajeroImpl implements Cajero {
         //inicializar el estado en login
         this.state = new Login(this);
     }
-    
-    public void run()
-    {
-        while ( true )
-        {
-            while ( !this.userAuthenticated )
-            {
-                this.screen.displayMessageLine( "\nWelcome!" );
-                authenticateUser();
-            }
-            
-            performTransactions(); 
-            this.userAuthenticated = false;
-            this.currentAccountNumber = 0;
-            this.screen.displayMessageLine( "\nThank you! Goodbye!" );
-        }
-    }
-    
-    private void authenticateUser()
-    {
-        this.screen.displayMessage( "\nPlease enter your account number: " );
-        int accountNumber = this.keypad.getInput(); 
-        this.screen.displayMessage( "\nEnter your PIN: " ); 
-        int pin = this.keypad.getInput(); 
-        
-        this.userAuthenticated =
-                this.bankDatabase.authenticateUser( accountNumber, pin );
-        
-        if ( this.userAuthenticated )
-        {
-            this.currentAccountNumber = accountNumber;
-        }
-        else
-            this.screen.displayMessageLine(
-                    "Invalid account number or PIN. Please try again." );
-    }
-    
-    private void performTransactions()
-    {
-        Transaction currentTransaction = null;
-        
-        boolean userExited = false; // user has not chosen to exit
-        
-        while ( !userExited )
-        {
-            int mainMenuSelection = displayMainMenu();
-            
-            switch ( mainMenuSelection )
-            {
-                case BALANCE_INQUIRY:
-                case WITHDRAWAL:
-                case DEPOSIT:
-                    currentTransaction =
-                            createTransaction( mainMenuSelection );
-                    
-                    currentTransaction.execute(); 
-                    break;
-                case EXIT: 
-                    this.screen.displayMessageLine( "\nExiting the system..." );
-                    userExited = true;
-                    break;
-                default:
-                    this.screen.displayMessageLine(
-                            "\nYou did not enter a valid selection. Try again." );
-                    break;
-            } 
-        } 
-    }
-    
-    private int displayMainMenu()
-    {
-        this.screen.displayMessageLine( "\nMain menu:" );
-        this.screen.displayMessageLine( "1 - View my balance" );
-        this.screen.displayMessageLine( "2 - Withdraw cash" );
-        this.screen.displayMessageLine( "3 - Deposit funds" );
-        this.screen.displayMessageLine( "4 - Exit\n" );
-        this.screen.displayMessage( "Enter a choice: " );
-        
-        return this.keypad.getInput(); 
-    } 
-    
-    private Transaction createTransaction( int type )
-    {
-        Transaction temp = null; 
-        
-        switch ( type )
-        {
-            case BALANCE_INQUIRY:
-                temp = new BalanceInquiry(
-                        this.currentAccountNumber, this.screen, this.bankDatabase );
-                break;
-            case WITHDRAWAL: 
-                temp = new Withdrawal( this.currentAccountNumber, this.screen,
-                        this.bankDatabase, this.keypad, this.cashDispenser );
-                break;
-            case DEPOSIT: 
-                temp = new Deposit( this.currentAccountNumber, this.screen,
-                        this.bankDatabase, this.keypad, this.depositSlot );
-                break;
-        } 
-        
-        return temp; 
-    }
-    
+      
     
     public void changeState(State state){
         this.state = state;
@@ -173,13 +70,20 @@ public class CajeroImpl implements Cajero {
     }
 
     @Override
-    public void botones(int num) {
-        listener.accept(state.botones(num));
+    public void transaction(int num) {
+        listener.accept(state.performTransaction(num));
     }
 
     @Override
-    public void execute(int num) {
-     //   listener.accept(state.execute(num));
+    public void mainMenu() {
+        listener.accept(state.mainMenu());
     }
+
+    @Override
+    public void authenticate() {
+        listener.accept(state.authenticateUser());
+    }
+
+ 
     
 }

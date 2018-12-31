@@ -17,13 +17,19 @@ public class Login extends State{
         super(atm);
     }
 
+
     @Override
-    public String botones(int num) {
+    public String authenticateUser() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void execute(int num) {
+    public String performTransaction(int num) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String mainMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

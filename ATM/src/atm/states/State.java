@@ -20,7 +20,7 @@ public abstract class State {
     
     // **** metodos de las clases **** 
     
-    public abstract String botones(int num);
-    public abstract void execute(int num);
-    
+    public abstract String authenticateUser();
+    public abstract String performTransaction(int num);
+    public abstract String mainMenu();
 }

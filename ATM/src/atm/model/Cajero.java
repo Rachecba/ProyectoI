@@ -12,6 +12,7 @@ public interface Cajero {
     void attach(Consumer<String> listener);
     void onInit();
     
-    void botones(int num);
-    void execute(int num);
+    void authenticate();
+    void transaction(int num);
+    void mainMenu();
 }
