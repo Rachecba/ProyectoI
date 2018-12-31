@@ -35,7 +35,9 @@ public class Balance extends State{
 
     @Override
     public String balanceTransaction() {
-        return "\n Balance information: " + "\n - Available balance:" + atm.getAvailableBalance() + "\n - Total balance: " + atm.getTotalBalance();
+        return "\n Balance information: " + 
+               "\n - Available balance:" + atm.getAvailableBalance() + 
+               "\n - Total balance: " + atm.getTotalBalance();
     }
 
     @Override
