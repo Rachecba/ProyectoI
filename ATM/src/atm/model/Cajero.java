@@ -15,7 +15,7 @@ public interface Cajero {
     void message();
     void optionMenu();
     void authenticate();
-    void transaction();
+    void transaction(int num);
     void deposit();
     void withdrawal();
     void balance();

@@ -76,17 +76,17 @@ public class CajeroImpl implements Cajero {
 
     @Override
     public void message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.accept(state.message());
     }
 
     @Override
     public void optionMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.accept(Integer.toString(state.menuOpt()));
     }
 
     @Override
-    public void transaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void transaction(int num) {
+        listener.accept(state.performTransaction(EXIT));
     }
 
     @Override
