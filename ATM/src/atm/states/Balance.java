@@ -15,37 +15,37 @@ public class Balance extends State{
 
     @Override
     public String authenticateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String performTransaction(int num) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
-    public int menuOpt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int input() {
+        return 0;
     }
 
     @Override
     public String balanceTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "\n Balance information: " + "\n - Available balance:" + atm.getAvailableBalance() + "\n - Total balance: " + atm.getTotalBalance();
     }
 
     @Override
     public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String depositTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override

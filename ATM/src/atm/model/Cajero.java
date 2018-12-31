@@ -13,7 +13,7 @@ public interface Cajero {
     void onInit();
     
     void message();
-    void optionMenu();
+    void input();
     void authenticate();
     void transaction(int num);
     void deposit();

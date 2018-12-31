@@ -23,7 +23,7 @@ public abstract class State {
     public abstract String authenticateUser(); //login
     public abstract String performTransaction(int num); //aqui envia al programa al estado correspondiente.
     public abstract String message(); //para los mensajes de cada estado que deben salir en pantalla
-    public abstract int menuOpt();
+    public abstract int input();
     public abstract String balanceTransaction(); //ejecuta metodo de ver balance de cuenta
     public abstract String withdrawalTransaction(); // ejecuta metodo de sacar dinero
     public abstract String depositTransaction(); // ejecuta metodo de deposito de dinero

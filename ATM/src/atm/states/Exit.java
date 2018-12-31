@@ -33,7 +33,7 @@ public class Exit extends State{
     }
 
     @Override
-    public int menuOpt() {
+    public int input() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

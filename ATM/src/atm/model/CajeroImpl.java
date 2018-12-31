@@ -49,6 +49,15 @@ public class CajeroImpl implements Cajero {
         //inicializar el estado en login
         this.state = new Login(this);
     }
+    
+    public double getAvailableBalance(){
+        
+        return bankDatabase.getAvailableBalance( this.currentAccountNumber);
+    }
+    
+    public double getTotalBalance(){
+        return bankDatabase.getTotalBalance(currentAccountNumber);
+    }
       
     public void changeState(State state){
         this.state = state;
@@ -79,8 +88,8 @@ public class CajeroImpl implements Cajero {
     }
 
     @Override
-    public void optionMenu() {
-        listener.accept(Integer.toString(state.menuOpt()));
+    public void input() {
+        listener.accept(Integer.toString(state.input()));
     }
 
     @Override

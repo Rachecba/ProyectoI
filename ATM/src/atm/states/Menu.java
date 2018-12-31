@@ -48,6 +48,7 @@ public class Menu extends State{
 
     @Override
     public String message() {
+        
          return "\nMain menu:" + 
                 "\n 1 - View my balance" + 
                 "\n 2 - Withdraw cash" + 
@@ -57,7 +58,7 @@ public class Menu extends State{
     }
 
     @Override
-    public int menuOpt() {
+    public int input() {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
