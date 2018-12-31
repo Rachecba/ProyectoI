@@ -31,10 +31,10 @@ public class CajeroImpl implements Cajero {
     private static final Logger logger = Logger.getLogger(CLASSNAME);
     
     // constants corresponding to main menu options
-    private static final int BALANCE_INQUIRY = 1;
-    private static final int WITHDRAWAL = 2;
-    private static final int DEPOSIT = 3;
-    private static final int EXIT = 4;
+    public static final int BALANCE_INQUIRY = 1;
+    public static final int WITHDRAWAL = 2;
+    public static final int DEPOSIT = 3;
+    public static final int EXIT = 4;
     
     public CajeroImpl(Screen screen, Keypad keypad, CashDispenser cashDispenser, DepositSlot depositSlot, BankDatabase bankDatabase)
     {
@@ -50,7 +50,6 @@ public class CajeroImpl implements Cajero {
         this.state = new Login(this);
     }
       
-    
     public void changeState(State state){
         this.state = state;
     }
@@ -86,29 +85,26 @@ public class CajeroImpl implements Cajero {
 
     @Override
     public void transaction(int num) {
-        listener.accept(state.performTransaction(EXIT));
+        listener.accept(state.performTransaction(num));
     }
 
     @Override
     public void deposit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.accept(state.depositTransaction());
     }
 
     @Override
     public void withdrawal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.accept(state.withdrawalTransaction());
     }
 
     @Override
     public void balance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listener.accept(state.balanceTransaction());
     }
 
     @Override
     public void exit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
- 
-    
+        listener.accept(state.exit());
+    } 
 }

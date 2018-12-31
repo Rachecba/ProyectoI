@@ -6,6 +6,7 @@
 package atm.states;
 
 import atm.model.CajeroImpl;
+import java.util.Scanner;
 
 /**
  *
@@ -19,13 +20,31 @@ public class Menu extends State{
 
     @Override
     public String authenticateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String performTransaction(int num) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        switch(num){
+            case CajeroImpl.BALANCE_INQUIRY:
+                atm.changeState(new Balance(atm));
+                return "\n Changing to Balance State";
+            case CajeroImpl.WITHDRAWAL:
+                atm.changeState(new Withdraw(atm));
+                return "\n Changing to Withdrawal State";
+            case CajeroImpl.DEPOSIT:
+                atm.changeState(new Deposit(atm));
+                return "\n Changing to Deposit State";
+            case CajeroImpl.EXIT:
+                atm.changeState(new Exit(atm));
+                return "\n Changing to Exit State";
+            default:
+                return "\\nYou did not enter a valid selection. Try again.";
+                
+        } 
     }
+    
 
     @Override
     public String message() {
@@ -39,27 +58,28 @@ public class Menu extends State{
 
     @Override
     public int menuOpt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
     }
 
     @Override
     public String balanceTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String depositTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
 
     @Override
     public String exit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Not available";
     }
         
     
