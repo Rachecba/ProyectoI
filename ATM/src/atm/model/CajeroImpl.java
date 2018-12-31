@@ -19,8 +19,12 @@ public class CajeroImpl implements Cajero {
     State state;
     Consumer<String> listener;
     
+    private final static int CANCELED = 6;// constant corresponding to menu option to cancel
+    
+    private int amount;
     private boolean userAuthenticated; 
     private int currentAccountNumber; 
+    
     private Screen screen; 
     private Keypad keypad;
     private CashDispenser cashDispenser; 
@@ -67,7 +71,72 @@ public class CajeroImpl implements Cajero {
         return state;
     }
     
-    public boolean retiro(int cant){}
+    public boolean retiro(int cant){
+        boolean cashDispensed = false; 
+        double availableBalance; 
+        do{
+            amount = displayMenuOfAmounts();  
+            if ( amount != CANCELED ){
+                availableBalance = bankDatabase.getAvailableBalance( this.currentAccountNumber );
+                if ( amount <= availableBalance &&amount!=7){// el diferente de 7 es para que retorne falso por mal uso del usuario
+                    if ( cashDispenser.isSufficientCashAvailable( amount ) ){
+                        bankDatabase.debit( currentAccountNumber, amount );
+                        cashDispenser.dispenseCash( amount ); 
+                        cashDispensed = true;
+                        return true;
+                     //   screen.displayMessageLine( "\nYour cash has been dispensed. Please take your cash now." );
+                    }else 
+                        return false;
+                    //    screen.displayMessageLine("\nInsufficient cash available in the ATM.\n\nPlease choose a smaller amount." );
+                }else{ // no hay dinero disponible
+                  return false;
+                    //screen.displayMessageLine("\nInsufficient funds in your account.\n\nPlease choose a smaller amount." );
+                } 
+            } 
+            else{
+                //screen.displayMessageLine( "\nCanceling transaction..." );
+                return false; 
+            } 
+        } while ( !cashDispensed );
+    }
+    private int displayMenuOfAmounts()
+    {
+        int userChoice = 0; 
+        
+        // array of amounts to correspond to menu numbers
+        int[] amounts = { 0, 20, 40, 60, 100, 200 };
+        
+        while ( userChoice == 0 )
+        {
+            int input = keypad.getInput();
+            switch ( input )
+            {
+                case 1:
+                    userChoice = amounts[ input ]; 
+                    break;
+                case 2: 
+                    userChoice = amounts[ input ]; 
+                    break;
+                case 3:
+                    userChoice = amounts[ input ];
+                    break;
+                case 4:
+                    userChoice = amounts[ input ];
+                    break;
+                case 5:
+                    userChoice = amounts[ input ];
+                    break;
+                case CANCELED: 
+                    userChoice = CANCELED;
+                    break;
+                default: 
+                    return 7;//si retorna 7 tiene que retornar falso la funcion que llama a esta
+                    //"\nInvalid selection. Try again." );
+            } 
+        } 
+        
+        return userChoice; 
+    } 
     
     @Override
     public void attach(Consumer<String> listener) {

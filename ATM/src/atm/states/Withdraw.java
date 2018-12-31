@@ -30,11 +30,12 @@ public class Withdraw extends State{
     @Override
     public String message() {
         //menu cuanto dinero quiere retirar
+        return "\nWithdrawal Menu: \n1 - $20 \n 2 - $40 \n 3 - $60 \n 4 - $100 \n 5 - $200 \n 6 - Cancel transaction \nChoose a withdrawal amount: ";
     }
 
     @Override
     public int input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
     @Override
@@ -46,8 +47,13 @@ public class Withdraw extends State{
     public String withdrawalTransaction() {
         //switch segun la cantidad de dinero a retirar
         //la logica se hace en el CajeroImpl
-        
-        int cantidad;
+        if(this.atm.retiro(0)){
+            //
+            return "Transaccion exitosa";//por poner algo
+        }else{
+            return "Transaccion invalida";
+        }
+        //int cantidad;
     }
 
     @Override
