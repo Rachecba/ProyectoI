@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public interface Cajero {
     
     void attach(Consumer<String> listener);
-    void onInit();
+    void onInit(); //inicializa
     
     void message();
     void input();

@@ -29,7 +29,7 @@ public class Withdraw extends State{
 
     @Override
     public String message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //menu cuanto dinero quiere retirar
     }
 
     @Override
@@ -44,7 +44,10 @@ public class Withdraw extends State{
 
     @Override
     public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //switch segun la cantidad de dinero a retirar
+        //la logica se hace en el CajeroImpl
+        
+        int cantidad;
     }
 
     @Override

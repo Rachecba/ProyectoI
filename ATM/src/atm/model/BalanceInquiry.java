@@ -8,6 +8,8 @@ import atm.view.Screen;
  *
  * @author Rachel
  */
+
+
 public class BalanceInquiry extends Transaction{
     
     public BalanceInquiry( int userAccountNumber, Screen atmScreen,

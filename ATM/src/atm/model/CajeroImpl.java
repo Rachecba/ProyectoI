@@ -67,6 +67,8 @@ public class CajeroImpl implements Cajero {
         return state;
     }
     
+    public boolean retiro(int cant){}
+    
     @Override
     public void attach(Consumer<String> listener) {
         this.listener = listener;
@@ -74,7 +76,7 @@ public class CajeroImpl implements Cajero {
 
     @Override
     public void onInit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //listener.accept(state.inicializa());
     }
 
     @Override
