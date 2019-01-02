@@ -37,40 +37,23 @@ public class Withdrawal extends Transaction {
         BankDatabaseImpl bankDatabase = getBankDatabase();
         Screen screen = getScreen();
         
-        do
-        {
-            amount = displayMenuOfAmounts();
-            
-            if ( amount != CANCELED )
-            {
+        do{
+            amount = displayMenuOfAmounts();  
+            if ( amount != CANCELED ){
                 availableBalance = bankDatabase.getAvailableBalance( getAccountNumber() );
-                
-                if ( amount <= availableBalance )
-                {
-                    if ( cashDispenser.isSufficientCashAvailable( amount ) )
-                    {
+                if ( amount <= availableBalance ){
+                    if ( cashDispenser.isSufficientCashAvailable( amount ) ){
                         bankDatabase.debit( getAccountNumber(), amount );
-                        
                         cashDispenser.dispenseCash( amount ); 
-                        cashDispensed = true; 
-                        
-                        screen.displayMessageLine( "\nYour cash has been" +
-                                " dispensed. Please take your cash now." );
-                    } 
-                    else 
-                        screen.displayMessageLine(
-                                "\nInsufficient cash available in the ATM." +
-                                        "\n\nPlease choose a smaller amount." );
-                } // end if
-                else // not enough money available in user's account
-                {
-                    screen.displayMessageLine(
-                            "\nInsufficient funds in your account." +
-                                    "\n\nPlease choose a smaller amount." );
+                        cashDispensed = true;
+                        screen.displayMessageLine( "\nYour cash has been dispensed. Please take your cash now." );
+                    }else 
+                        screen.displayMessageLine("\nInsufficient cash available in the ATM.\n\nPlease choose a smaller amount." );
+                }else{ // no hay dinero disponible
+                    screen.displayMessageLine("\nInsufficient funds in your account.\n\nPlease choose a smaller amount." );
                 } 
             } 
-            else 
-            {
+            else{
                 screen.displayMessageLine( "\nCanceling transaction..." );
                 return; 
             } 
@@ -98,8 +81,7 @@ public class Withdrawal extends Transaction {
             screen.displayMessageLine( "6 - Cancel transaction" );
             screen.displayMessage( "\nChoose a withdrawal amount: " );
             
-            int input = keypad.getInput(); 
-            
+            int input = keypad.getInput();
             switch ( input )
             {
                 case 1: // if the user chose a withdrawal amount

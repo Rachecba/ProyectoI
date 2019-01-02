@@ -17,7 +17,7 @@ public class Withdraw extends State{
     public Withdraw(BankDatabaseImpl context) {
         super(context);
     }
-    
+
     @Override
     public boolean credit(int account, double amount){
         return false;
