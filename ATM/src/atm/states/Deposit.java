@@ -5,7 +5,8 @@
  */
 package atm.states;
 
-import atm.model.CajeroImpl;
+import atm.data.BankDatabaseImpl;
+import atm.model.AtmImpl;
 
 /**
  *
@@ -13,48 +14,18 @@ import atm.model.CajeroImpl;
  */
 public class Deposit extends State{
     
-    public Deposit(CajeroImpl atm){
-        super(atm);
+    public Deposit(BankDatabaseImpl context) {
+        super(context);
     }
-
+    
     @Override
-    public String authenticateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean debit(int account, double amount){
+        return false;
     }
-
+    
     @Override
-    public String performTransaction(int num) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String balanceTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String depositTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String exit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double[] getBalance(int account){
+        return null;
     }
     
 }

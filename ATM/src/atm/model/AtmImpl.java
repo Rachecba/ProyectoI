@@ -1,24 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package atm.states;
 
-import atm.data.BankDatabaseImpl;
-import atm.model.Atm;
-import java.util.function.Consumer;
-import java.util.logging.Logger;
+package atm.model;
+
+import atm.data.BankDatabase;
+import atm.states.State;
+
 
 /**
  *
  * @author Rachel
  */
-public class State implements Atm{
-    private static Logger logger;
-    BankDatabaseImpl context;
+public class AtmImpl implements Atm {
+    State state;
+    BankDatabase dao;
+    boolean authenticated;
     
-    public State(BankDatabaseImpl context){}
+    public AtmImpl(){
+    
+    }
 
     @Override
     public boolean authenticateUser(int account, int pin) {
@@ -44,7 +42,5 @@ public class State implements Atm{
     public double[] getBalance(int account) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
     
 }

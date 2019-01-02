@@ -9,7 +9,7 @@ package atm;
  *
  * @author Rachel
  */
-public class ATM {
+public class Main {
 
     /**
      * @param args the command line arguments

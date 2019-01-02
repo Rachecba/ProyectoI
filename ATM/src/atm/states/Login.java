@@ -5,7 +5,8 @@
  */
 package atm.states;
 
-import atm.model.CajeroImpl;
+import atm.data.BankDatabaseImpl;
+import atm.model.AtmImpl;
 
 /**
  *
@@ -13,49 +14,18 @@ import atm.model.CajeroImpl;
  */
 public class Login extends State{
     
-    public Login(CajeroImpl atm){
-        super(atm);
+    private final int BALANCE_INQUIRY = 1;
+    private final int WITHDRAWAL = 2;
+    private final int DEPOSIT = 3;
+    private final int EXIT = 4;
+    
+    public Login(BankDatabaseImpl context) {
+        super(context);
     }
-
-
-    @Override
-    public String authenticateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String performTransaction(int num) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String balanceTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String depositTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String exit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    @Override 
+    public boolean startTransaction(int type){
+        return false;
     }
     
 }

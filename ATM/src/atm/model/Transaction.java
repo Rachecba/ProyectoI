@@ -1,7 +1,7 @@
 
 package atm.model;
 
-import atm.data.BankDatabase;
+import atm.data.BankDatabaseImpl;
 import atm.view.Screen;
 
 /**
@@ -11,10 +11,10 @@ import atm.view.Screen;
 public abstract class Transaction {
      private int accountNumber; 
    private Screen screen; 
-   private BankDatabase bankDatabase; 
+   private BankDatabaseImpl bankDatabase; 
 
    public Transaction( int userAccountNumber, Screen atmScreen, 
-      BankDatabase atmBankDatabase )
+      BankDatabaseImpl atmBankDatabase )
    {
       accountNumber = userAccountNumber;
       screen = atmScreen;
@@ -31,7 +31,7 @@ public abstract class Transaction {
       return screen;
    } 
 
-   public BankDatabase getBankDatabase()
+   public BankDatabaseImpl getBankDatabase()
    {
       return bankDatabase;
    } 

@@ -1,7 +1,7 @@
 
 package atm.model;
 
-import atm.data.BankDatabase;
+import atm.data.BankDatabaseImpl;
 import atm.view.DepositSlot;
 import atm.view.Keypad;
 import atm.view.Screen;
@@ -17,7 +17,7 @@ public class Deposit extends Transaction{
     private DepositSlot depositSlot; 
     private final static int CANCELED = 0; 
     
-    public Deposit( int userAccountNumber, Screen atmScreen, BankDatabase atmBankDatabase, Keypad atmKeypad, DepositSlot atmDepositSlot ){
+    public Deposit( int userAccountNumber, Screen atmScreen, BankDatabaseImpl atmBankDatabase, Keypad atmKeypad, DepositSlot atmDepositSlot ){
         super( userAccountNumber, atmScreen, atmBankDatabase );
         
         keypad = atmKeypad;
@@ -27,7 +27,7 @@ public class Deposit extends Transaction{
     @Override
     public void execute()
     {
-        BankDatabase bankDatabase = getBankDatabase(); 
+        BankDatabaseImpl bankDatabase = getBankDatabase(); 
         Screen screen = getScreen(); 
         
         amount = promptForDepositAmount(); 

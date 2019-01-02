@@ -5,7 +5,8 @@
  */
 package atm.states;
 
-import atm.model.CajeroImpl;
+import atm.data.BankDatabaseImpl;
+import atm.model.AtmImpl;
 
 /**
  *
@@ -13,47 +14,14 @@ import atm.model.CajeroImpl;
  */
 public class Exit extends State{
     
-    public Exit(CajeroImpl atm){
-        super(atm);
+    public Exit(BankDatabaseImpl context) {
+        super(context);
     }
-
+    
     @Override
-    public String authenticateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean authenticateUser(int account, int pin){
+        return false;
     }
-
-    @Override
-    public String performTransaction(int num) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String message() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int input() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String balanceTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String withdrawalTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String depositTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String exit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+   
 }

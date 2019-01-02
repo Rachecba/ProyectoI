@@ -1,7 +1,7 @@
 
 package atm.model;
 
-import atm.data.BankDatabase;
+import atm.data.BankDatabaseImpl;
 import atm.view.CashDispenser;
 import atm.view.Keypad;
 import atm.view.Screen;
@@ -19,7 +19,7 @@ public class Withdrawal extends Transaction {
     private final static int CANCELED = 6;
     
     public Withdrawal( int userAccountNumber, Screen atmScreen,
-            BankDatabase atmBankDatabase, Keypad atmKeypad,
+            BankDatabaseImpl atmBankDatabase, Keypad atmKeypad,
             CashDispenser atmCashDispenser )
     {
         super( userAccountNumber, atmScreen, atmBankDatabase );
@@ -34,7 +34,7 @@ public class Withdrawal extends Transaction {
         boolean cashDispensed = false; 
         double availableBalance; 
         
-        BankDatabase bankDatabase = getBankDatabase();
+        BankDatabaseImpl bankDatabase = getBankDatabase();
         Screen screen = getScreen();
         
         do

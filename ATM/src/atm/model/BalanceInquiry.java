@@ -1,7 +1,7 @@
 
 package atm.model;
 
-import atm.data.BankDatabase;
+import atm.data.BankDatabaseImpl;
 import atm.view.Screen;
 
 /**
@@ -13,7 +13,7 @@ import atm.view.Screen;
 public class BalanceInquiry extends Transaction{
     
     public BalanceInquiry( int userAccountNumber, Screen atmScreen,
-            BankDatabase atmBankDatabase )
+            BankDatabaseImpl atmBankDatabase )
     {
         super( userAccountNumber, atmScreen, atmBankDatabase );
     }     
@@ -21,7 +21,7 @@ public class BalanceInquiry extends Transaction{
     @Override
     public void execute()
     {
-        BankDatabase bankDatabase = getBankDatabase();
+        BankDatabaseImpl bankDatabase = getBankDatabase();
         Screen screen = getScreen();
         
         double availableBalance =
