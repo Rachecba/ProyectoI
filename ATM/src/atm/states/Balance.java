@@ -19,7 +19,7 @@ public class Balance extends State{
         Account account = context.getDao().loadAccount(number);
         double availableBalance = account.getAvailableBalance();
         double totalBalance = account.getTotalBalance();
-        context.setState(new Login(context));
+        context.setState(new Start(context));
         
         return new double[]{availableBalance, totalBalance};
     }

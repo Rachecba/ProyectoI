@@ -5,6 +5,7 @@
  */
 package atm.states;
 
+import atm.data.Account;
 import atm.model.AtmImpl;
 
 /**
@@ -13,37 +14,23 @@ import atm.model.AtmImpl;
  */
 public class Login extends State{
     
-    private final int BALANCE_INQUIRY = 1;
-    private final int WITHDRAWAL = 2;
-    private final int DEPOSIT = 3;
-    private final int EXIT = 4;
-    
     public Login(AtmImpl context) {
         super(context);
     }
     
-    @Override 
-    public boolean startTransaction(int type){
-        boolean result = true;
+    @Override
+    public boolean authenticateUser(int number, int pin){
+        boolean result;
         
-        switch(type){
-            case BALANCE_INQUIRY:
-                context.setState(new Balance(context));
-                break;
-            case WITHDRAWAL:
-                context.setState(new Withdraw(context));
-                break;
-            case DEPOSIT:
-                context.setState(new Deposit(context));
-                break;
-            case EXIT:
-                context.setState(new Exit(context));
-                break;
-            default:
-                result = false;
+        if(this.authenticateUser(number, pin) == true){
+            context.setAuthenticated(true);
+            result = true;
+        }else{
+            result = false;
         }
         
         return result;
     }
     
+   
 }

@@ -16,6 +16,15 @@ public class AtmImpl implements Atm {
     
     public AtmImpl(BankDatabase bd){
         this.dao = bd;
+        this.authenticated = false;
+    }
+    
+    public boolean getAuthenticated(){
+        return this.authenticated;
+    }
+    
+    public void setAuthenticated(boolean authenticated){
+        this.authenticated = authenticated;
     }
     
     public State getState(){
