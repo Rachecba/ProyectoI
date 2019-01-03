@@ -5,7 +5,7 @@ package atm.data;
  *
  * @author Rachel
  */
-public class Account {
+    public class Account {
    
     private int accountNumber; 
     private int pin; 
@@ -19,7 +19,7 @@ public class Account {
         totalBalance = theTotalBalance;
     }
     
-    public boolean validatePIN( int userPIN )
+   public boolean validatePIN( int userPIN )
    {
       if ( userPIN == pin )
          return true;

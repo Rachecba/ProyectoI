@@ -14,8 +14,8 @@ public class AtmImpl implements Atm {
     BankDatabase dao;
     boolean authenticated;
     
-    public AtmImpl(){
-    
+    public AtmImpl(BankDatabase bd){
+        this.dao = bd;
     }
     
     public State getState(){
@@ -36,27 +36,27 @@ public class AtmImpl implements Atm {
 
     @Override
     public boolean authenticateUser(int account, int pin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state.authenticateUser(account, pin);
     }
 
     @Override
     public boolean startTransaction(int type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state.startTransaction(type);
     }
 
     @Override
     public boolean credit(int account, double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state.credit(account, amount);
     }
 
     @Override
     public boolean debit(int account, double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state.debit(account, amount);
     }
 
     @Override
     public double[] getBalance(int account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return state.getBalance(account);
     }
     
 }
