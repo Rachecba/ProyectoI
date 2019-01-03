@@ -5,6 +5,7 @@
  */
 package atm.states;
 
+import atm.data.Account;
 import atm.model.AtmImpl;
 
 /**
@@ -18,8 +19,8 @@ public class Exit extends State{
     }
     
     @Override
-    public boolean authenticateUser(int account, int pin){
-        return false;
+    public boolean authenticateUser(int number, int pin){
+        return true;
     }
     
    
