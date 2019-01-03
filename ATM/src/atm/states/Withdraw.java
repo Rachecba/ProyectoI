@@ -5,7 +5,7 @@
  */
 package atm.states;
 
-import atm.data.BankDatabaseImpl;
+import atm.data.Account;
 import atm.model.AtmImpl;
 
 /**
@@ -14,13 +14,34 @@ import atm.model.AtmImpl;
  */
 public class Withdraw extends State{
     
-    public Withdraw(BankDatabaseImpl context) {
+    public Withdraw(AtmImpl context) {
         super(context);
     }
-
+    
     @Override
-    public boolean credit(int account, double amount){
-        return false;
+    public boolean debit(int number, double amount){
+        boolean result;
+        
+        Account account = context.getDao().loadAccount(number);
+        
+        if(account.getAvailableBalance() >= amount){
+            account.debit(amount);
+            result = true;
+        }else{
+            result = false;
+        }
+        
+        return result;
+    }
+    
+    @Override
+    public double[] getBalance(int number){
+        Account account = context.getDao().loadAccount(number);
+        double availableBalance = account.getAvailableBalance();
+        double totalBalance = account.getTotalBalance();
+        context.setState(new Login(context));
+        
+        return new double[]{availableBalance, totalBalance};
     }
     
 }

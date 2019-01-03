@@ -5,8 +5,8 @@
  */
 package atm.states;
 
-import atm.data.BankDatabaseImpl;
 import atm.model.Atm;
+import atm.model.AtmImpl;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
@@ -16,9 +16,14 @@ import java.util.logging.Logger;
  */
 public class State implements Atm{
     private static Logger logger;
-    BankDatabaseImpl context;
+    AtmImpl context;
     
-    public State(BankDatabaseImpl context){}
+    public State(AtmImpl context){
+        this.context = context;
+        
+        if(logger == null)
+            logger = Logger.getLogger(this.getClass().getName());
+    }
 
     @Override
     public boolean authenticateUser(int account, int pin) {

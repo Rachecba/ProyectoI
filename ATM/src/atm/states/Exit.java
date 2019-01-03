@@ -5,7 +5,6 @@
  */
 package atm.states;
 
-import atm.data.BankDatabaseImpl;
 import atm.model.AtmImpl;
 
 /**
@@ -14,7 +13,7 @@ import atm.model.AtmImpl;
  */
 public class Exit extends State{
     
-    public Exit(BankDatabaseImpl context) {
+    public Exit(AtmImpl context) {
         super(context);
     }
     

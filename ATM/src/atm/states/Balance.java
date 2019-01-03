@@ -1,7 +1,8 @@
 
 package atm.states;
 
-import atm.data.BankDatabaseImpl;
+import atm.data.Account;
+import atm.model.AtmImpl;
 
 /**
  *
@@ -9,13 +10,18 @@ import atm.data.BankDatabaseImpl;
  */
 public class Balance extends State{
     
-    public Balance(BankDatabaseImpl context) {
+    public Balance(AtmImpl context) {
         super(context);
     }
     
     @Override
-    public double[] getBalance(int account){
-        return null;
+    public double[] getBalance(int number){
+        Account account = context.getDao().loadAccount(number);
+        double availableBalance = account.getAvailableBalance();
+        double totalBalance = account.getTotalBalance();
+        context.setState(new Login(context));
+        
+        return new double[]{availableBalance, totalBalance};
     }
     
 }

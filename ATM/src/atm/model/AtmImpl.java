@@ -17,6 +17,22 @@ public class AtmImpl implements Atm {
     public AtmImpl(){
     
     }
+    
+    public State getState(){
+        return this.state;
+    }
+    
+    public void setState(State state){
+        this.state = state;
+    }
+    
+    public BankDatabase getDao(){
+        return this.dao;
+    }
+    
+    public void setDao(BankDatabase dao){
+        this.dao = dao;
+    }
 
     @Override
     public boolean authenticateUser(int account, int pin) {
