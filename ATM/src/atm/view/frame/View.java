@@ -16,6 +16,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+        this.textArea.setText("");
     }
 
     /**
@@ -29,7 +30,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textArea = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         button1 = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
@@ -50,14 +51,14 @@ public class View extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(140, 189, 229));
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("pruebaaaaaaa de textoooooo");
-        jTextArea1.setBorder(javax.swing.BorderFactory.createMatteBorder(8, 8, 8, 8, new java.awt.Color(10, 111, 144)));
-        jScrollPane1.setViewportView(jTextArea1);
+        textArea.setBackground(new java.awt.Color(255, 255, 255));
+        textArea.setColumns(20);
+        textArea.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
+        textArea.setForeground(new java.awt.Color(0, 0, 0));
+        textArea.setRows(5);
+        textArea.setText("pruebaaaaaaa de textoooooo");
+        textArea.setBorder(javax.swing.BorderFactory.createMatteBorder(8, 8, 8, 8, new java.awt.Color(10, 111, 144)));
+        jScrollPane1.setViewportView(textArea);
 
         jPanel2.setBackground(new java.awt.Color(140, 189, 229));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -221,6 +222,11 @@ public class View extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void MenuPrincipal(){
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button0;
@@ -238,7 +244,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton takeCash;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }

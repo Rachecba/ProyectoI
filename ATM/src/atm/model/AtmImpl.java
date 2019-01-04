@@ -3,6 +3,10 @@ package atm.model;
 
 import atm.data.BankDatabase;
 import atm.states.State;
+import atm.view.CashDispenser;
+import atm.view.DepositSlot;
+import atm.view.Keypad;
+import atm.view.Screen;
 
 
 /**

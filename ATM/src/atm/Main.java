@@ -5,17 +5,55 @@
  */
 package atm;
 
+import atm.data.BankDatabase;
+import atm.data.BankDatabaseImpl;
+import atm.model.Atm;
+import atm.model.AtmImpl;
+import atm.view.frame.View;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Rachel
  */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
+    
+//    static
+//    {
+//        InputStream inputStream = Main.class.getResourceAsStream("logging.properties");
+//        try
+//        {
+//            LogManager.getLogManager().readConfiguration(inputStream);
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        BankDatabase dao = new BankDatabaseImpl();
+        
+        Atm atm;
+        
+//        if ((args.length > 0) && ("-nogui".equals(args[0])))
+//        {
+//            Logger.getLogger(Main.class.getName()).config("Starting ATM using console user interface");
+//            atm = new AtmImpl(new atm.view.cmd.Screen(), new atm.view.cmd.Keypad(), new atm.view.cmd.CashDispenser(), new atm.view.cmd.DepositSlot(), dao);
+//        }
+//        else
+//        {
+//            Logger.getLogger(Main.class.getName()).info("Starting ATM using Swing user interface");
+//            View swingATMView = new View();
+//            atm = new AtmImpl(swingATMView, swingATMView, swingATMView, swingATMView, dao);
+//            
+//            swingATMView.setVisible(true);
+//        }
+//        
+//        atm.run();
     }
     
 }
