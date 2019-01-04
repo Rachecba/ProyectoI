@@ -84,71 +84,71 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
 
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button 1.png"))); // NOI18N
         button1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button1MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button1MouseReleased(evt);
             }
         });
 
         button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button2.png"))); // NOI18N
         button2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button2MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button2MouseReleased(evt);
             }
         });
 
         button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button3.png"))); // NOI18N
         button3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button3MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button3MouseReleased(evt);
             }
         });
 
         button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button4.png"))); // NOI18N
         button4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button4MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button4MouseReleased(evt);
             }
         });
 
         button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button5.png"))); // NOI18N
         button5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button5MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button5MouseReleased(evt);
             }
         });
 
         button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button6.png"))); // NOI18N
         button6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button6MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button6MouseReleased(evt);
             }
         });
 
         button7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button7.png"))); // NOI18N
         button7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button7MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button7MouseReleased(evt);
             }
         });
 
         button8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button8.png"))); // NOI18N
         button8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button8MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button8MouseReleased(evt);
             }
         });
 
         button9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button9.png"))); // NOI18N
         button9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button9MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button9MouseReleased(evt);
             }
         });
 
         button0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button0.png"))); // NOI18N
         button0.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button0MouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                button0MouseReleased(evt);
             }
         });
 
@@ -263,57 +263,53 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterMouseClicked
-  
         this.printInput = false;
-        
         if(!inputVal.isEmpty()){
            noInput = false;
-           System.out.println("vaiable falsa");
         }
-        
        noInput = false;
         
     }//GEN-LAST:event_enterMouseClicked
 
-    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button1MouseClicked
+    private void button1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseReleased
+        jButtonActionPerformed(evt,1);
+    }//GEN-LAST:event_button1MouseReleased
 
-    private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button2MouseClicked
+    private void button2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseReleased
+        jButtonActionPerformed(evt,2);
+    }//GEN-LAST:event_button2MouseReleased
 
-    private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button3MouseClicked
+    private void button3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseReleased
+        jButtonActionPerformed(evt,3);
+    }//GEN-LAST:event_button3MouseReleased
 
-    private void button4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button4MouseClicked
+    private void button4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseReleased
+        jButtonActionPerformed(evt,4);
+    }//GEN-LAST:event_button4MouseReleased
 
-    private void button5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button5MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button5MouseClicked
+    private void button5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button5MouseReleased
+        jButtonActionPerformed(evt,5);
+    }//GEN-LAST:event_button5MouseReleased
 
-    private void button6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button6MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button6MouseClicked
+    private void button6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button6MouseReleased
+        jButtonActionPerformed(evt,6);
+    }//GEN-LAST:event_button6MouseReleased
 
-    private void button7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button7MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button7MouseClicked
+    private void button7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button7MouseReleased
+        jButtonActionPerformed(evt,7);
+    }//GEN-LAST:event_button7MouseReleased
 
-    private void button8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button8MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button8MouseClicked
+    private void button8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button8MouseReleased
+        jButtonActionPerformed(evt,8);
+    }//GEN-LAST:event_button8MouseReleased
 
-    private void button9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button9MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button9MouseClicked
+    private void button9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button9MouseReleased
+        jButtonActionPerformed(evt,9);
+    }//GEN-LAST:event_button9MouseReleased
 
-    private void button0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button0MouseClicked
-        jButtonActionPerformed(evt);
-    }//GEN-LAST:event_button0MouseClicked
+    private void button0MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button0MouseReleased
+        jButtonActionPerformed(evt,0);
+    }//GEN-LAST:event_button0MouseReleased
     
     
     /**
@@ -357,50 +353,49 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         
     public void inicio(){
         
-            this.displayMessageLine( "\nWelcome!" );
+        this.displayMessageLine("\nWelcome!");
         try {
             sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-            this.displayMessage( "\nPlease enter your account number: " );
-            
-            int accountNumber = this.getInput(); // input account number
-            
-            
-            this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
-            int pin = this.getInput(); // input PIN
-            
-            if(atm.authenticateUser(accountNumber, pin)){
-                this.accountNumber=accountNumber;
-                MenuPrincipal();
-            }else{
-                this.displayMessageLine( "Invalid account number or PIN. Please try again." );
-                try {
-                    sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                inicio();
+        this.displayMessage("\nPlease enter your account number: ");
+
+        int accountNumber = this.getInput(); // input account number
+
+        this.displayMessage("\nEnter your PIN: "); // prompt for PIN
+        int pin = this.getInput(); // input PIN
+        System.out.println("entrando con "+accountNumber+"pin: "+pin);
+        if (atm.authenticateUser(accountNumber, pin)) {
+            this.accountNumber = accountNumber;
+            System.out.println("Si es");
+            MenuPrincipal();
+        } else {
+            System.out.println("No es");
+            this.displayMessageLine("Invalid account number or PIN. Please try again.");
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
+            inicio();
+        }
     }
             
-    private void jButtonActionPerformed(MouseEvent evt) {      
-        
-        System.out.println("ENTRE AQUI");
+    private void jButtonActionPerformed(MouseEvent evt,int valor) {   
         JButton btn = (JButton) evt.getSource();
-        
+        System.out.println(valor);
         if(this.inputChoice){
-            inputVal = btn.getText();
+            inputVal = ""+valor;
             noInput = false;
             this.inputChoice = false;
             return;
         }
         
-        inputVal += btn.getText();
+        inputVal += valor+"";
         
         if(this.printInput){
-            this.outputTextArea.append(btn.getText());
+            this.outputTextArea.append(valor+"");
         }
         
         logger.finer(inputVal);
@@ -593,6 +588,7 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       
       System.out.println("ENTRE AQUI");
       logger.fine(inputVal);
+        System.out.println(inputVal+"  xDsddsd");
       int input = Integer.parseInt(inputVal);
         System.out.println("ENTRE AQUI");
       inputVal = "";

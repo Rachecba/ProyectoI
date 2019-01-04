@@ -21,8 +21,7 @@ public class Login extends State{
     @Override
     public boolean authenticateUser(int number, int pin){
         boolean result;
-        
-        if(this.authenticateUser(number, pin) == true){
+        if(context.getDao().authenticateUser(number, pin)){
             context.setAuthenticated(true);
             context.setState(new Start(context));
             result = true;
