@@ -39,21 +39,19 @@ public class Main {
         
         Atm atm;
         
-//        if ((args.length > 0) && ("-nogui".equals(args[0])))
-//        {
-//            Logger.getLogger(Main.class.getName()).config("Starting ATM using console user interface");
-//            atm = new AtmImpl(new atm.view.cmd.Screen(), new atm.view.cmd.Keypad(), new atm.view.cmd.CashDispenser(), new atm.view.cmd.DepositSlot(), dao);
-//        }
-//        else
-//        {
-//            Logger.getLogger(Main.class.getName()).info("Starting ATM using Swing user interface");
-//            View swingATMView = new View();
-//            atm = new AtmImpl(swingATMView, swingATMView, swingATMView, swingATMView, dao);
-//            
-//            swingATMView.setVisible(true);
-//        }
-//        
-//        atm.run();
+        if ((args.length > 0) && ("-nogui".equals(args[0])))
+        {
+            Logger.getLogger(Main.class.getName()).config("Starting ATM using console user interface");
+           // atm = new AtmImpl(new atm.view.cmd.Screen(), new atm.view.cmd.Keypad(), new atm.view.cmd.CashDispenser(), new atm.view.cmd.DepositSlot(), dao);
+        }
+        else
+        {
+            Logger.getLogger(Main.class.getName()).info("Starting ATM using Swing user interface");
+            View swingATMView = new View();
+            swingATMView.setVisible(true);
+        }
+        
+        
     }
     
 }

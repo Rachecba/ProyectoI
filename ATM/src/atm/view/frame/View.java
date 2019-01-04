@@ -5,18 +5,39 @@
  */
 package atm.view.frame;
 
+import atm.data.BankDatabaseImpl;
+import atm.model.AtmImpl;
+import atm.states.Login;
+import atm.states.Start;
+import atm.view.CashDispenser;
+import atm.view.DepositSlot;
+import atm.view.Keypad;
+import atm.view.Screen;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Rachel
  */
-public class View extends javax.swing.JFrame {
-
-    /**
-     * Creates new form View
-     */
+public class View extends  javax.swing.JFrame implements Keypad, Screen, DepositSlot, CashDispenser{
+    private static Logger logger = Logger.getLogger(View.class.getName());
+    
+    private String inputVal = "";
+    private boolean noInput = true;
+    private static boolean printInput = false;
+    private boolean inputChoice = false;
+    private int accountNumber=0;
+    AtmImpl atm;
+    
     public View() {
         initComponents();
-        this.textArea.setText("");
+        this.outputTextArea.setText("");
+        BankDatabaseImpl bankDAO = new BankDatabaseImpl();
+        atm = new AtmImpl(bankDAO);
+        atm.setState(new Login(atm));
+        //inicio();
     }
 
     /**
@@ -30,7 +51,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
+        outputTextArea = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         button1 = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
@@ -51,14 +72,13 @@ public class View extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(140, 189, 229));
 
-        textArea.setBackground(new java.awt.Color(255, 255, 255));
-        textArea.setColumns(20);
-        textArea.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
-        textArea.setForeground(new java.awt.Color(0, 0, 0));
-        textArea.setRows(5);
-        textArea.setText("pruebaaaaaaa de textoooooo");
-        textArea.setBorder(javax.swing.BorderFactory.createMatteBorder(8, 8, 8, 8, new java.awt.Color(10, 111, 144)));
-        jScrollPane1.setViewportView(textArea);
+        outputTextArea.setBackground(new java.awt.Color(255, 255, 255));
+        outputTextArea.setColumns(20);
+        outputTextArea.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
+        outputTextArea.setRows(5);
+        outputTextArea.setText("pruebaaaaaaa de textoooooo");
+        outputTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(8, 8, 8, 8, new java.awt.Color(10, 111, 144)));
+        jScrollPane1.setViewportView(outputTextArea);
 
         jPanel2.setBackground(new java.awt.Color(140, 189, 229));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -223,11 +243,183 @@ public class View extends javax.swing.JFrame {
         });
     }
     
-    public void MenuPrincipal(){
-        
-        
+    public void inicio() {
+      this.displayMessageLine( "\nWelcome!" ); 
+      this.displayMessage( "\nPlease enter your account number: " );
+      int accountNumber = this.getInput(); // input account number
+      this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
+      int pin = this.getInput(); // input PIN
+      
+      if(atm.authenticateUser(accountNumber, pin)){
+          this.accountNumber=accountNumber;
+          MenuPrincipal();
+      }else{
+          this.displayMessageLine( "Invalid account number or PIN. Please try again." );
+          try {
+              sleep(1000);
+          } catch (InterruptedException ex) {
+              Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          inicio();
+      }
     }
+    
+    public void MenuPrincipal() {
+        atm.setState(new Start(atm));
+        int aux= displayMainMenu();
+        atm.startTransaction(aux);
+        // de aqui se tiene que saber de alguna manera el estado para saber que sacar en pantalla lo referente a ese estado
+        switch(aux){
+            case 1:
+                double[] info=atm.getBalance(this.accountNumber);
+                this.displayMessageLine( "\nBalance Information:" );
+                this.displayMessage( " - Available balance: " ); 
+                this.displayDollarAmount(info[0]);
+                this.displayMessage( "\n - Total balance:     " );
+                this.displayDollarAmount( info[1] );
+                this.displayMessageLine( "" );
+        {
+            try {
+                // hay que agregar que si preciona enter se devuelve a el menu o que si tarda unos segundos se devuelve
+                sleep(2000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                MenuPrincipal();
+                break;
+            case 2:
+                if(atm.debit(this.accountNumber, displayMenuOfAmounts())){
+                    this.displayMessageLine( "\nYour cash has been dispensed. Please take your cash now." );
+                }else{
+                    this.displayMessageLine( 
+                     "\nInsufficient cash available in the ATM. \n\nPlease choose a smaller amount." );
+                }
+                break;
+            case 3:
+                if(atm.credit(accountNumber, promptForDepositAmount())){
+                    
+                }else{
+                    
+                }
+                break;
+            case 4:
+                inicio();
+                break;
+            default: 
+                MenuPrincipal();
+                break;
+        }
+    }
+    private int displayMainMenu()
+   {
+      this.displayMessageLine( "\nMain menu:" );
+      this.displayMessageLine( "1 - View my balance" );
+      this.displayMessageLine( "2 - Withdraw cash" );
+      this.displayMessageLine( "3 - Deposit funds" );
+      this.displayMessageLine( "4 - Exit\n" );
+      this.displayMessage( "Enter a choice: " );
+      return this.getInput(); // return user's selection
+   } // end method displayMainMenu
+    
+   private int displayMenuOfAmounts()
+   {
+      int userChoice = 0; // local variable to store return value
+      // array of amounts to correspond to menu numbers
+      int[] amounts = { 0, 20, 40, 60, 100, 200 };
 
+      // loop while no valid choice has been made
+      while ( userChoice == 0 )
+      {
+         // display the menu
+         this.displayMessageLine( "\nWithdrawal Menu:" );
+         this.displayMessageLine( "1 - $20" );
+         this.displayMessageLine( "2 - $40" );
+         this.displayMessageLine( "3 - $60" );
+         this.displayMessageLine( "4 - $100" );
+         this.displayMessageLine( "5 - $200" );
+         this.displayMessageLine( "6 - Cancel transaction" );
+         this.displayMessage( "\nChoose a withdrawal amount: " );
+
+         int input = this.getInput(); // get user input through keypad
+
+         // determine how to proceed based on the input value
+         switch ( input )
+         {
+            case 1: // if the user chose a withdrawal amount 
+               userChoice = amounts[ input ]; // save user's choice
+               break;  
+            case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
+               userChoice = amounts[ input ]; // save user's choice
+               break;  
+            case 3: // corresponding amount from amounts array
+               userChoice = amounts[ input ]; // save user's choice
+               break;  
+            case 4:
+               userChoice = amounts[ input ]; // save user's choice
+               break;  
+            case 5:
+               userChoice = amounts[ input ]; // save user's choice
+               break;       
+            case 0: // the user chose to cancel
+               userChoice = 0; // save user's choice
+               break;
+            default: // the user did not enter a value from 1-6
+               this.displayMessageLine( "\nInvalid selection. Try again." );
+         } // end switch
+      } // end while
+
+      return userChoice; // return withdrawal amount or CANCELED
+   } // end method displayMenuOfAmounts
+   
+   private double promptForDepositAmount()
+   {
+      // display the prompt
+      this.displayMessage( "\nPlease enter a deposit amount in " + 
+         "CENTS (or 0 to cancel): \n" );
+      int input = this.getInput(); // receive input of deposit amount
+      
+      // check whether the user canceled or entered a valid amount
+      if ( input == 0 ) // si es la opcion de canselar entonces se sale
+         return 0;
+      else
+      {
+         return ( double ) input / 100; // return dollar amount 
+      } // end else
+   } // end method promptForDepositAmount
+   
+   private void displayDebit(int cancel, int amout){
+       if(cancel==0){
+//       this.displayMessage( 
+//            "\nPlease insert a deposit envelope containing " );
+//         this.displayDollarAmount( amount );
+//         this.displayMessageLine( "." );
+//
+//         // receive deposit envelope
+//         boolean envelopeReceived = depositSlot.isEnvelopeReceived();
+//
+//         // check whether deposit envelope was received
+//         if ( envelopeReceived )
+//         {  
+//            screen.displayMessageLine( "\nYour envelope has been " + 
+//               "received.\nNOTE: The money just deposited will not " + 
+//               "be available until we verify the amount of any " +
+//               "enclosed cash and your checks clear." );
+//            
+//            // credit account to reflect the deposit
+//            bankDatabase.credit( getAccountNumber(), amount ); 
+//         } // end if
+//         else // deposit envelope not received
+//         {
+//            screen.displayMessageLine( "\nYou did not insert an " +
+//               "envelope, so the ATM has canceled your transaction." );
+//         } // end else
+      } // end if 
+      else // user canceled instead of entering amount
+      {
+         this.displayMessageLine( "\nCanceling transaction..." );
+      } // end else
+   }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button0;
     private javax.swing.JButton button1;
@@ -244,7 +436,88 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea outputTextArea;
     private javax.swing.JButton takeCash;
-    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int getInput() {
+      inputVal = "";
+      noInput = true;
+      
+      while(noInput){
+          try{
+              Thread.sleep(50);
+          } catch (InterruptedException e){}
+      }
+      
+      logger.fine(inputVal);
+      
+      int input = Integer.parseInt(inputVal);
+      inputVal = "";
+      noInput = true;
+      printInput = false;
+      
+      return input;
+    }
+
+    @Override
+    public void displayDollarAmount(double amount) {
+        this.outputTextArea.append(amount + "\n");    
+    }
+
+    @Override
+    public void displayMessage(String message) {
+        logger.fine(message);
+        
+        if(message == null){
+            this.inputChoice = true;
+            return;
+        }
+        
+        if(message.isEmpty()){
+            this.printInput = true;
+            return;
+        }
+        
+        if(message.startsWith("\n")){
+            this.outputTextArea.setText("");
+        }
+        
+        this.outputTextArea.append(message);
+    }
+
+    @Override
+    public void displayMessageLine(String message) {
+        logger.fine(message);
+        
+        if(message.startsWith("\n"))
+            this.outputTextArea.setText("");
+        
+        this.outputTextArea.append(message);
+        this.outputTextArea.append("\n");
+        
+        if(message.isEmpty()){
+            try{
+                Thread.sleep(2000);
+            }catch (InterruptedException ex){}
+        }
+    }
+
+    @Override
+    public boolean isEnvelopeReceived() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return true;//para que compile
+    }
+
+    @Override
+    public void dispenseCash(int amount) {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isSufficientCashAvailable(int amount) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;//para que compile
+    }
 }
