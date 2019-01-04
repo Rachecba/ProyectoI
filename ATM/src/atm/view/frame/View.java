@@ -29,15 +29,15 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     private static boolean printInput = false;
     private boolean inputChoice = false;
     private int accountNumber=0;
+    private boolean inicio = false;
     AtmImpl atm;
     
     public View() {
         initComponents();
-        this.outputTextArea.setText("");
         BankDatabaseImpl bankDAO = new BankDatabaseImpl();
         atm = new AtmImpl(bankDAO);
         atm.setState(new Login(atm));
-        //inicio();
+        actualizaPantalla();
     }
 
     /**
@@ -243,25 +243,39 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         });
     }
     
-    public void inicio() {
-      this.displayMessageLine( "\nWelcome!" ); 
-      this.displayMessage( "\nPlease enter your account number: " );
-      int accountNumber = this.getInput(); // input account number
-      this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
-      int pin = this.getInput(); // input PIN
-      
-      if(atm.authenticateUser(accountNumber, pin)){
-          this.accountNumber=accountNumber;
-          MenuPrincipal();
-      }else{
-          this.displayMessageLine( "Invalid account number or PIN. Please try again." );
-          try {
-              sleep(1000);
-          } catch (InterruptedException ex) {
-              Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-          }
-          inicio();
-      }
+    public void actualizaPantalla(){
+        this.outputTextArea.setText("");
+        
+        
+    }
+    
+    public void inicio(){
+        
+            this.displayMessageLine( "\nWelcome!" );
+        try {
+            sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            this.displayMessage( "\nPlease enter your account number: " );
+            
+            int accountNumber = this.getInput(); // input account number
+            this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
+            int pin = this.getInput(); // input PIN
+            
+            if(atm.authenticateUser(accountNumber, pin)){
+                this.accountNumber=accountNumber;
+                MenuPrincipal();
+            }else{
+                this.displayMessageLine( "Invalid account number or PIN. Please try again." );
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                inicio();
+            }
+            
     }
     
     public void MenuPrincipal() {
@@ -311,6 +325,7 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                 break;
         }
     }
+    
     private int displayMainMenu()
    {
       this.displayMessageLine( "\nMain menu:" );
@@ -490,7 +505,7 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     @Override
     public void displayMessageLine(String message) {
         logger.fine(message);
-        
+  
         if(message.startsWith("\n"))
             this.outputTextArea.setText("");
         

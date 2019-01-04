@@ -49,6 +49,7 @@ public class Main {
             Logger.getLogger(Main.class.getName()).info("Starting ATM using Swing user interface");
             View swingATMView = new View();
             swingATMView.setVisible(true);
+            swingATMView.inicio();
         }
         
         
