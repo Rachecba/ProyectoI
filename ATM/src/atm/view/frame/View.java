@@ -30,15 +30,13 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     private static boolean printInput = false;
     private boolean inputChoice = false;
     private int accountNumber=0;
-    private boolean inicio = false;
     AtmImpl atm;
     
-    public View() throws InterruptedException {
+    public View() {
         initComponents();
         BankDatabaseImpl bankDAO = new BankDatabaseImpl();
         atm = new AtmImpl(bankDAO);
-        atm.setState(new Login(atm));
-        actualizaPantalla();
+        this.outputTextArea.setText("");
     }
 
     /**
@@ -265,8 +263,15 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterMouseClicked
+  
+        this.printInput = false;
         
+        if(!inputVal.isEmpty()){
+           noInput = false;
+           System.out.println("vaiable falsa");
+        }
         
+       noInput = false;
         
     }//GEN-LAST:event_enterMouseClicked
 
@@ -341,21 +346,15 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new View().setVisible(true);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                try {
+//                    new View().setVisible(true);
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+//                }
             }
         });
     }
-    
-    public void actualizaPantalla(){
-        this.outputTextArea.setText("");
         
-        
-    }
-    
     public void inicio(){
         
             this.displayMessageLine( "\nWelcome!" );
@@ -367,6 +366,8 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             this.displayMessage( "\nPlease enter your account number: " );
             
             int accountNumber = this.getInput(); // input account number
+            
+            
             this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
             int pin = this.getInput(); // input PIN
             
@@ -384,7 +385,9 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             }
     }
             
-    private void jButtonActionPerformed(MouseEvent evt) {                                       
+    private void jButtonActionPerformed(MouseEvent evt) {      
+        
+        System.out.println("ENTRE AQUI");
         JButton btn = (JButton) evt.getSource();
         
         if(this.inputChoice){
@@ -578,15 +581,20 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
 
     @Override
     public int getInput() {
+        
       inputVal = "";
       noInput = true;
+     
       while(noInput){
           try{
               Thread.sleep(50);
           } catch (InterruptedException e){}
       }
+      
+      System.out.println("ENTRE AQUI");
       logger.fine(inputVal);
       int input = Integer.parseInt(inputVal);
+        System.out.println("ENTRE AQUI");
       inputVal = "";
       noInput = true;
       printInput = false;
