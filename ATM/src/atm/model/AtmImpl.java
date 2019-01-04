@@ -2,6 +2,8 @@
 package atm.model;
 
 import atm.data.BankDatabase;
+import atm.states.Login;
+import atm.states.Start;
 import atm.states.State;
 import atm.view.CashDispenser;
 import atm.view.DepositSlot;
@@ -21,6 +23,7 @@ public class AtmImpl implements Atm {
     public AtmImpl(BankDatabase bd){
         this.dao = bd;
         this.authenticated = false;
+        this.state= new Login(this);
     }
     
     public boolean getAuthenticated(){

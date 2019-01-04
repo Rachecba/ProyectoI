@@ -7,15 +7,15 @@ package atm.view.frame;
 
 import atm.data.BankDatabaseImpl;
 import atm.model.AtmImpl;
-import atm.states.Login;
-import atm.states.Start;
 import atm.view.CashDispenser;
 import atm.view.DepositSlot;
 import atm.view.Keypad;
 import atm.view.Screen;
+import java.awt.event.MouseEvent;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
@@ -31,13 +31,11 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     private int accountNumber=0;
     AtmImpl atm;
     
-    public View() {
+    public View() throws InterruptedException {
         initComponents();
         this.outputTextArea.setText("");
         BankDatabaseImpl bankDAO = new BankDatabaseImpl();
         atm = new AtmImpl(bankDAO);
-        atm.setState(new Login(atm));
-        //inicio();
     }
 
     /**
@@ -84,26 +82,81 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button 1.png"))); // NOI18N
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
 
         button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button2.png"))); // NOI18N
+        button2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button2MouseClicked(evt);
+            }
+        });
 
         button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button3.png"))); // NOI18N
+        button3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button3MouseClicked(evt);
+            }
+        });
 
         button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button4.png"))); // NOI18N
+        button4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button4MouseClicked(evt);
+            }
+        });
 
         button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button5.png"))); // NOI18N
+        button5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button5MouseClicked(evt);
+            }
+        });
 
         button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button6.png"))); // NOI18N
+        button6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button6MouseClicked(evt);
+            }
+        });
 
         button7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button7.png"))); // NOI18N
+        button7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button7MouseClicked(evt);
+            }
+        });
 
         button8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button8.png"))); // NOI18N
+        button8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button8MouseClicked(evt);
+            }
+        });
 
         button9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button9.png"))); // NOI18N
+        button9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button9MouseClicked(evt);
+            }
+        });
 
         button0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/button0.png"))); // NOI18N
+        button0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button0MouseClicked(evt);
+            }
+        });
 
         enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/atm/view/icons/enter.png"))); // NOI18N
+        enter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -208,6 +261,53 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void enterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_enterMouseClicked
+
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button1MouseClicked
+
+    private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button2MouseClicked
+
+    private void button3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button3MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button3MouseClicked
+
+    private void button4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button4MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button4MouseClicked
+
+    private void button5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button5MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button5MouseClicked
+
+    private void button6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button6MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button6MouseClicked
+
+    private void button7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button7MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button7MouseClicked
+
+    private void button8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button8MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button8MouseClicked
+
+    private void button9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button9MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button9MouseClicked
+
+    private void button0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button0MouseClicked
+        jButtonActionPerformed(evt);
+    }//GEN-LAST:event_button0MouseClicked
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -238,14 +338,41 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                try {
+                    new View().setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     
-    public void inicio() {
+    private void jButtonActionPerformed(MouseEvent evt) {                                       
+        JButton btn = (JButton) evt.getSource();
+        
+        if(this.inputChoice){
+            inputVal = btn.getText();
+            noInput = false;
+            this.inputChoice = false;
+            return;
+        }
+        
+        inputVal += btn.getText();
+        
+        if(this.printInput){
+            this.outputTextArea.append(btn.getText());
+        }
+        
+        logger.finer(inputVal);
+    }
+    
+    public void inicio() throws InterruptedException {
+        
       this.displayMessageLine( "\nWelcome!" ); 
+      paintAll(getGraphics());
+      sleep(1000);
       this.displayMessage( "\nPlease enter your account number: " );
+      paintAll(getGraphics());
       int accountNumber = this.getInput(); // input account number
       this.displayMessage( "\nEnter your PIN: " ); // prompt for PIN
       int pin = this.getInput(); // input PIN
@@ -258,14 +385,12 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
           try {
               sleep(1000);
           } catch (InterruptedException ex) {
-              Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
           }
           inicio();
       }
     }
     
-    public void MenuPrincipal() {
-        atm.setState(new Start(atm));
+    public void MenuPrincipal() throws InterruptedException {
         int aux= displayMainMenu();
         atm.startTransaction(aux);
         // de aqui se tiene que saber de alguna manera el estado para saber que sacar en pantalla lo referente a ese estado
@@ -278,22 +403,20 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                 this.displayMessage( "\n - Total balance:     " );
                 this.displayDollarAmount( info[1] );
                 this.displayMessageLine( "" );
-        {
-            try {
-                // hay que agregar que si preciona enter se devuelve a el menu o que si tarda unos segundos se devuelve
-                sleep(2000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+                {
+                    try {
+                        // hay que agregar que si preciona enter se devuelve a el menu o que si tarda unos segundos se devuelve
+                        sleep(2000);
+                    } catch (InterruptedException ex) {
+                    }
+                }
                 MenuPrincipal();
                 break;
             case 2:
                 if(atm.debit(this.accountNumber, displayMenuOfAmounts())){
                     this.displayMessageLine( "\nYour cash has been dispensed. Please take your cash now." );
                 }else{
-                    this.displayMessageLine( 
-                     "\nInsufficient cash available in the ATM. \n\nPlease choose a smaller amount." );
+                    this.displayMessageLine( "\nInsufficient cash available in the ATM. \n\nPlease choose a smaller amount." );
                 }
                 break;
             case 3:
@@ -327,7 +450,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       int userChoice = 0; // local variable to store return value
       // array of amounts to correspond to menu numbers
       int[] amounts = { 0, 20, 40, 60, 100, 200 };
-
       // loop while no valid choice has been made
       while ( userChoice == 0 )
       {
@@ -361,7 +483,7 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             case 5:
                userChoice = amounts[ input ]; // save user's choice
                break;       
-            case 0: // the user chose to cancel
+            case 6: // the user chose to cancel
                userChoice = 0; // save user's choice
                break;
             default: // the user did not enter a value from 1-6
@@ -444,20 +566,16 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     public int getInput() {
       inputVal = "";
       noInput = true;
-      
       while(noInput){
           try{
               Thread.sleep(50);
           } catch (InterruptedException e){}
       }
-      
       logger.fine(inputVal);
-      
       int input = Integer.parseInt(inputVal);
       inputVal = "";
       noInput = true;
       printInput = false;
-      
       return input;
     }
 
@@ -469,7 +587,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     @Override
     public void displayMessage(String message) {
         logger.fine(message);
-        
         if(message == null){
             this.inputChoice = true;
             return;
@@ -483,7 +600,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         if(message.startsWith("\n")){
             this.outputTextArea.setText("");
         }
-        
         this.outputTextArea.append(message);
     }
 

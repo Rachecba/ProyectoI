@@ -24,6 +24,7 @@ public class Login extends State{
         
         if(this.authenticateUser(number, pin) == true){
             context.setAuthenticated(true);
+            context.setState(new Start(context));
             result = true;
         }else{
             result = false;
