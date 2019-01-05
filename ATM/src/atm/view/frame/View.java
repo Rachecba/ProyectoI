@@ -8,6 +8,7 @@ package atm.view.frame;
 import atm.data.BankDatabaseImpl;
 import atm.model.AtmImpl;
 import atm.states.Login;
+import atm.states.Start;
 import atm.view.CashDispenser;
 import atm.view.DepositSlot;
 import atm.view.Keypad;
@@ -393,7 +394,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
         if(this.printInput){
             this.outputTextArea.append(valor+"");
         }
-        
         logger.finer(inputVal);
     }
     
@@ -405,16 +405,21 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             case 1:
                 double[] info=atm.getBalance(this.accountNumber);
                 this.displayMessageLine( "\nBalance Information:" );
-                this.displayMessage( " - Available balance: " ); 
+                this.displayMessage( "- Available balance: " ); 
                 this.displayDollarAmount(info[0]);
-                this.displayMessage( "\n - Total balance:     " );
+                this.displayMessage( "- Total balance:     " );
                 this.displayDollarAmount( info[1] );
                 this.displayMessageLine( "" );
                 espera(2000);
                 MenuPrincipal();
                 break;
             case 2:
-                if(atm.debit(this.accountNumber, displayMenuOfAmounts())){
+                int aux2=displayMenuOfAmounts();
+                if(aux2==6){
+                    atm.setState(new Start(atm));// es la única forma 
+                    MenuPrincipal();
+                }
+                if(atm.debit(this.accountNumber, aux2)){
                     this.displayMessageLine( "\nYour cash has been dispensed. \nPlease take your cash now." );
                     espera(2000);
                     MenuPrincipal();
@@ -454,11 +459,12 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       this.displayMessageLine( "3 - Deposit funds" );
       this.displayMessageLine( "4 - Exit\n" );
       this.displayMessage( "Enter a choice: " );
+       printAll(getGraphics());
       return this.getInput(); // return user's selection
    } // end method displayMainMenu
     
    private int displayMenuOfAmounts()
-   {
+   { 
       int userChoice = 0; // local variable to store return value
       // array of amounts to correspond to menu numbers
       int[] amounts = { 0, 20, 40, 60, 100, 200 };
@@ -493,14 +499,11 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                userChoice = amounts[ input ]; // save user's choice
                break;       
             case 6: // the user chose to cancel
-                inputVal="";
-               MenuPrincipal();
+                userChoice=6;
                break;
             default: // the user did not enter a value from 1-6
                this.displayMessageLine( "\nInvalid selection. Try again." );
-               inputVal="";
                espera(1500);
-               displayMenuOfAmounts();
          } // end switch
       } // end while
 
@@ -589,7 +592,12 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       if(inputVal.equals("")){
           getInput();
       }
-      int input = Integer.parseInt(inputVal);
+      int input=0;
+      try{
+       input = Integer.parseInt(inputVal);
+      }catch(Exception ex){
+          
+      }
       inputVal = "";
       noInput = true;
       printInput = false;
