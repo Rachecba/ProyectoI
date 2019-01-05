@@ -21,16 +21,15 @@ public class Withdraw extends State{
     @Override
     public boolean debit(int number, double amount){
         boolean result;
-        
         Account account = context.getDao().loadAccount(number);
-        
         if(account.getAvailableBalance() >= amount){
             account.debit(amount);
             result = true;
         }else{
+            
             result = false;
         }
-        
+        context.setState(new Start(context));
         return result;
     }
     

@@ -235,8 +235,8 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(takeCash, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,7 +352,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
     }
         
     public void inicio(){
-        
         this.displayMessageLine("\nWelcome!");
         try {
             sleep(1000);
@@ -365,13 +364,10 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
 
         this.displayMessage("\nEnter your PIN: "); // prompt for PIN
         int pin = this.getInput(); // input PIN
-        System.out.println("entrando con "+accountNumber+"pin: "+pin);
         if (atm.authenticateUser(accountNumber, pin)) {
             this.accountNumber = accountNumber;
-            System.out.println("Si es");
             MenuPrincipal();
         } else {
-            System.out.println("No es");
             this.displayMessageLine("Invalid account number or PIN. Please try again.");
             try {
                 sleep(1000);
@@ -414,18 +410,14 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                 this.displayMessage( "\n - Total balance:     " );
                 this.displayDollarAmount( info[1] );
                 this.displayMessageLine( "" );
-                {
-                    try {
-                        // hay que agregar que si preciona enter se devuelve a el menu o que si tarda unos segundos se devuelve
-                        sleep(2000);
-                    } catch (InterruptedException ex) {
-                    }
-                }
+                espera(2000);
                 MenuPrincipal();
                 break;
             case 2:
                 if(atm.debit(this.accountNumber, displayMenuOfAmounts())){
-                    this.displayMessageLine( "\nYour cash has been dispensed. Please take your cash now." );
+                    this.displayMessageLine( "\nYour cash has been dispensed. \nPlease take your cash now." );
+                    espera(2000);
+                    MenuPrincipal();
                 }else{
                     this.displayMessageLine( "\nInsufficient cash available in the ATM. \n\nPlease choose a smaller amount." );
                 }
@@ -443,6 +435,14 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
             default: 
                 MenuPrincipal();
                 break;
+        }
+    }
+    
+    public void espera(int x){
+        try {
+            sleep(x);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -467,13 +467,10 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       {
          // display the menu
          this.displayMessageLine( "\nWithdrawal Menu:" );
-         this.displayMessageLine( "1 - $20" );
-         this.displayMessageLine( "2 - $40" );
-         this.displayMessageLine( "3 - $60" );
-         this.displayMessageLine( "4 - $100" );
-         this.displayMessageLine( "5 - $200" );
-         this.displayMessageLine( "6 - Cancel transaction" );
-         this.displayMessage( "\nChoose a withdrawal amount: " );
+         this.displayMessageLine( "1 - $20 \t2 - $40" );
+         this.displayMessageLine( "3 - $60 \t4 - $100" );
+         this.displayMessageLine( "5 - $200 \t6 - Cancel transaction" );
+         this.displayMessage( "Choose a withdrawal amount: " );
 
          int input = this.getInput(); // get user input through keypad
 
@@ -496,10 +493,14 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                userChoice = amounts[ input ]; // save user's choice
                break;       
             case 6: // the user chose to cancel
-               userChoice = 0; // save user's choice
+                inputVal="";
+               MenuPrincipal();
                break;
             default: // the user did not enter a value from 1-6
                this.displayMessageLine( "\nInvalid selection. Try again." );
+               inputVal="";
+               espera(1500);
+               displayMenuOfAmounts();
          } // end switch
       } // end while
 
@@ -576,7 +577,6 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
 
     @Override
     public int getInput() {
-        
       inputVal = "";
       noInput = true;
      
@@ -585,12 +585,11 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
               Thread.sleep(50);
           } catch (InterruptedException e){}
       }
-      
-      System.out.println("ENTRE AQUI");
       logger.fine(inputVal);
-        System.out.println(inputVal+"  xDsddsd");
+      if(inputVal.equals("")){
+          getInput();
+      }
       int input = Integer.parseInt(inputVal);
-        System.out.println("ENTRE AQUI");
       inputVal = "";
       noInput = true;
       printInput = false;
