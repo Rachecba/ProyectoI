@@ -20,19 +20,18 @@ import java.util.logging.Logger;
  * @author Rachel
  */
 public class Main {
-    
-//    static
-//    {
-//        InputStream inputStream = Main.class.getResourceAsStream("logging.properties");
-//        try
-//        {
-//            LogManager.getLogManager().readConfiguration(inputStream);
-//        }
-//        catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
+    static
+    {
+        InputStream inputStream = Main.class.getResourceAsStream("logging.properties");
+        try
+        {
+            LogManager.getLogManager().readConfiguration(inputStream);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
     
     public static void main(String[] args) throws InterruptedException {
         BankDatabase dao = new BankDatabaseImpl();
@@ -42,7 +41,7 @@ public class Main {
         if ((args.length > 0) && ("-nogui".equals(args[0])))
         {
             Logger.getLogger(Main.class.getName()).config("Starting ATM using console user interface");
-           // atm = new AtmImpl(new atm.view.cmd.Screen(), new atm.view.cmd.Keypad(), new atm.view.cmd.CashDispenser(), new atm.view.cmd.DepositSlot(), dao);
+            
         }
         else
         {
@@ -51,8 +50,6 @@ public class Main {
             swingATMView.setVisible(true);
             swingATMView.inicio();
         }
-        
-        
     }
     
 }

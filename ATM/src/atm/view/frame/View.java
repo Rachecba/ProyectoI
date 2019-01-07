@@ -428,11 +428,7 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
                 }
                 break;
             case 3:
-                if(atm.credit(accountNumber, promptForDepositAmount())){
-                    
-                }else{
-                    
-                }
+                displayDebit();
                 break;
             case 4:
                 inicio();
@@ -512,9 +508,9 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
    
    private double promptForDepositAmount()
    {
-      // display the prompt
-      this.displayMessage( "\nPlease enter a deposit amount in " + 
-         "CENTS (or 0 to cancel): \n" );
+      this.displayMessage( "\nPlease enter a deposit amount in \n " + 
+         "CENTS (or 0 to cancel): " );
+      printInput = true;
       int input = this.getInput(); // receive input of deposit amount
       
       // check whether the user canceled or entered a valid amount
@@ -526,38 +522,39 @@ public class View extends  javax.swing.JFrame implements Keypad, Screen, Deposit
       } // end else
    } // end method promptForDepositAmount
    
-   private void displayDebit(int cancel, int amout){
-       if(cancel==0){
-//       this.displayMessage( 
-//            "\nPlease insert a deposit envelope containing " );
-//         this.displayDollarAmount( amount );
-//         this.displayMessageLine( "." );
-//
-//         // receive deposit envelope
-//         boolean envelopeReceived = depositSlot.isEnvelopeReceived();
-//
-//         // check whether deposit envelope was received
-//         if ( envelopeReceived )
-//         {  
-//            screen.displayMessageLine( "\nYour envelope has been " + 
-//               "received.\nNOTE: The money just deposited will not " + 
-//               "be available until we verify the amount of any " +
-//               "enclosed cash and your checks clear." );
-//            
-//            // credit account to reflect the deposit
-//            bankDatabase.credit( getAccountNumber(), amount ); 
-//         } // end if
-//         else // deposit envelope not received
-//         {
-//            screen.displayMessageLine( "\nYou did not insert an " +
-//               "envelope, so the ATM has canceled your transaction." );
-//         } // end else
-      } // end if 
-      else // user canceled instead of entering amount
-      {
-         this.displayMessageLine( "\nCanceling transaction..." );
-      } // end else
-   }
+    private void displayDebit() {
+        this.displayMessage("\nPlease insert a deposit envelope containing ");
+        double amount = promptForDepositAmount();
+        System.out.println("amount in displayDebot"+amount);
+        if (amount != 0) {
+            this.displayDollarAmount(amount);
+            this.displayMessageLine(".");
+            // receive deposit envelope
+            boolean envelopeReceived = isEnvelopeReceived();
+            // check whether deposit envelope was received
+            if (envelopeReceived) {
+                this.displayMessageLine("\nYour envelope has been "
+                        + "received.\nNOTE: The money just deposited will not "
+                        + "\nbe available until we verify the amount of any "
+                        + "\nenclosed cash and your checks clear.");
+                espera(2000);
+                // credit account to reflect the deposit
+                atm.credit(accountNumber, amount);
+                atm.setState(new Start(atm));
+                MenuPrincipal();
+            } // end if
+            else // deposit envelope not received
+            {
+                this.displayMessageLine("\nYou did not insert an "
+                        + "envelope, so the ATM has canceled your transaction.");
+            } // end else
+        } else{ // user canceled instead of entering amount
+            this.displayMessageLine("\nCanceling transaction...");
+            espera(1500);
+            atm.setState(new Start(atm));
+            MenuPrincipal();
+        } // end else
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button0;
     private javax.swing.JButton button1;
